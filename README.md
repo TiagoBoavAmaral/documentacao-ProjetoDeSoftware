@@ -6,7 +6,7 @@
 
 ### 🚀 Bem-vindo(a) à documentação do Projeto AutoGest!
 
-Este repositório serve como um hub central para toda a documentação de arquitetura, design e modelagem do software **AutoGest**. Aqui, você encontrará uma coleção abrangente de diagramas UML e outros artefatos visuais que detalham a estrutura, o comportamento e as interações do sistema, fornecendo uma visão clara e estruturada para todos os stakeholders envolvidos.
+Este repositório concentra toda a documentação técnica de arquitetura, design e modelagem do software **AutoGest**. Neste espaço, estão reunidos diversos diagramas UML e documentos visuais que explicam a estrutura, o funcionamento e as interações do sistema, oferecendo uma compreensão detalhada e organizada para desenvolvedores, analistas e demais interessados no projeto.
 
 ### 📖 Sobre o Sistema
 
@@ -41,13 +41,13 @@ O AutoGest é um software focado em otimizar a gestão de uma autoescola, englob
 
 ### 💡 Visão Geral da Documentação
 
-Cada seção abaixo contém um diagrama específico acompanhado de uma breve descrição do seu propósito e do que ele representa no contexto do sistema **AutoGest**.
+Nas seções seguintes, cada diagrama é apresentado com uma explicação sobre sua função e significado dentro do contexto do **AutoGest**, permitindo uma compreensão completa da arquitetura e do funcionamento do sistema.
 
 ---
 
 ### 🏛️ Diagrama de Arquitetura
 
-Este diagrama (C4 Nível 2) ilustra a estrutura de alto nível do sistema **AutoGest**, mostrando os principais contêineres (aplicações, microsserviços, bancos de dados) e suas interações fundamentais. Ele fornece uma visão macro da organização do software.
+O diagrama de arquitetura (C4 Nível 2) apresenta a estrutura geral do **AutoGest** em alto nível, exibindo os principais elementos do sistema (aplicações web, serviços backend, bancos de dados) e como eles se relacionam. Oferece uma perspectiva ampla sobre a organização arquitetural da solução.
 
 ![Diagrama de Arquitetura](ImagesPlantUML/arquitetura.png)
 
@@ -55,7 +55,7 @@ Este diagrama (C4 Nível 2) ilustra a estrutura de alto nível do sistema **Auto
 
 ### 👥 Diagrama de Caso de Uso
 
-Apresenta os casos de uso principais do sistema **AutoGest**, identificando os atores (Administrador, Funcionário, Instrutor) e as funcionalidades que eles podem executar, descrevendo o comportamento externo do sistema.
+Demonstra as principais funcionalidades do **AutoGest** através dos casos de uso, mapeando os atores envolvidos (Administrador, Funcionário, Instrutor) e as ações que cada um pode realizar no sistema, definindo o comportamento esperado do ponto de vista do usuário.
 
 ![Diagrama de Caso de Uso](ImagesPlantUML/casosdeuso.png)
 
@@ -63,7 +63,7 @@ Apresenta os casos de uso principais do sistema **AutoGest**, identificando os a
 
 ### 🧱 Diagrama de Classe
 
-Detalha as classes do sistema, seus atributos, métodos e os relacionamentos estáticos (associações) entre elas, representando a estrutura estática do projeto.
+Expõe a modelagem orientada a objetos do sistema, apresentando todas as classes com seus respectivos atributos, operações e as conexões estáticas (associações, heranças, composições) que existem entre elas, modelando a estrutura estática da aplicação.
 
 ![Diagrama de Classe](ImagesPlantUML/classes.png)
 
@@ -71,7 +71,7 @@ Detalha as classes do sistema, seus atributos, métodos e os relacionamentos est
 
 ### 🧩 Diagrama de Componentes
 
-Exibe a organização e a dependência dos componentes de software, fornecendo uma visão modular do sistema e como as diferentes partes lógicas se encaixam e interagem.
+Demonstra como os componentes de software estão organizados e suas dependências mútuas, apresentando uma perspectiva modular da arquitetura e evidenciando como os diversos módulos lógicos se relacionam e trabalham em conjunto.
 
 ![Diagrama de Componentes](ImagesPlantUML/componentes.png)
 
@@ -79,17 +79,17 @@ Exibe a organização e a dependência dos componentes de software, fornecendo u
 
 ### 💬 Diagramas de Comunicação
 
-Estes diagramas mostram a interação entre objetos e componentes em um determinado cenário, focando na troca de mensagens numeradas e na colaboração para atingir um objetivo específico.
+Os diagramas de comunicação exibem como objetos e componentes interagem em situações específicas, destacando a sequência de mensagens trocadas e a forma como os elementos colaboram para completar uma tarefa ou funcionalidade.
 
 #### Diagrama de Comunicação: Cadastro de Aluno (UC-01)
 
-Detalha as interações necessárias para o processo de cadastro de um novo aluno no sistema.
+Demonstra o fluxo de comunicação entre os componentes durante o processo de registro de um novo aluno.
 
 ![Diagrama de Comunicação: Cadastro de Aluno](ImagesPlantUML/comunicacao-cadastroaluno.png)
 
 #### Diagrama de Comunicação: Visualizar Relatórios (UC-09/10)
 
-Detalha as interações dos componentes do sistema para que os usuários possam visualizar relatórios de progresso e de aulas.
+Mostra como os componentes se comunicam para permitir que os usuários acessem e visualizem relatórios de progresso dos alunos e informações sobre as aulas realizadas.
 
 ![Diagrama de Comunicação: Visualizar Relatórios](ImagesPlantUML/comunicacao-visualizarrelatorios.png)
 
@@ -97,17 +97,17 @@ Detalha as interações dos componentes do sistema para que os usuários possam 
 
 ### 🔄 Diagramas de Estados
 
-Representam os diferentes estados que os objetos podem ter ao longo do tempo e as transições entre esses estados em resposta a eventos específicos.
+Modelam os diversos estados possíveis que entidades do sistema podem assumir durante seu ciclo de vida, além das condições e eventos que provocam mudanças de estado.
 
 #### Diagrama de Estados: Status de Matrícula do Aluno
 
-Representa os diferentes estados que a matrícula de um aluno pode ter (ex: `Pendente`, `Ativa`, `Suspensa`, `Cancelada`) e as transições entre esses estados.
+Modela o ciclo de vida da matrícula de um aluno, mostrando os possíveis estados (como `Pendente`, `Ativa`, `Suspensa`, `Cancelada`) e quais ações ou eventos causam a mudança entre esses estados.
 
 ![Diagrama de Estados: Status de Matrícula](ImagesPlantUML/estados-alunostatusmatricula.png)
 
 #### Diagrama de Estados: Aula Prática
 
-Representa os diferentes estados que uma aula prática pode ter (ex: `Agendada`, `Em Andamento`, `Concluída`, `Cancelada`) e as transições entre esses estados.
+Descreve o ciclo de vida de uma aula prática, apresentando os estados possíveis (como `Agendada`, `Em Andamento`, `Concluída`, `Cancelada`) e os eventos que provocam as transições entre eles.
 
 ![Diagrama de Estados: Aula Prática](ImagesPlantUML/estados-aulapratica.png)
 
@@ -115,7 +115,7 @@ Representa os diferentes estados que uma aula prática pode ter (ex: `Agendada`,
 
 ### 🚀 Diagrama de Implantação
 
-Descreve a configuração física de hardware em nuvem onde o software será executado, incluindo os nós (Servidor da Aplicação, Servidor de Arquivos) e os componentes de software implantados neles.
+Especifica a infraestrutura de hardware e a arquitetura de implantação em ambiente de nuvem, indicando os servidores necessários (como Servidor de Aplicação e Servidor de Arquivos) e quais componentes do software serão instalados em cada nó.
 
 ![Diagrama de Implantação](ImagesPlantUML/implantacao.png)
 
@@ -123,7 +123,7 @@ Descreve a configuração física de hardware em nuvem onde o software será exe
 
 ### 💾 Diagrama de Modelo de Dados
 
-Ilustra a estrutura lógica do banco de dados (ERD), mostrando as entidades (tabelas), seus atributos (colunas) e os relacionamentos (`<PK>`, `<FK>`) entre elas.
+Apresenta o modelo entidade-relacionamento (ERD) do banco de dados, exibindo as tabelas, seus campos e os vínculos estabelecidos através de chaves primárias (`<PK>`) e estrangeiras (`<FK>`).
 
 ![Diagrama de Modelo de Dados](ImagesPlantUML/modelodedados.png)
 
@@ -131,48 +131,44 @@ Ilustra a estrutura lógica do banco de dados (ERD), mostrando as entidades (tab
 
 ### ⏳ Diagramas de Sequência
 
-Estes diagramas detalham a ordem cronológica das interações e a troca de mensagens entre objetos ou atores para realizar uma funcionalidade específica, mostrando a vida útil de cada participante.
+Os diagramas de sequência descrevem a ordem temporal das operações e a comunicação entre objetos ou atores durante a execução de uma funcionalidade, indicando o período de atividade de cada elemento envolvido no processo.
 
 #### Diagrama de Sequência: Cadastrar Novo Aluno (UC-01)
 
-Representa o fluxo de eventos e mensagens para o cadastro de um novo aluno no sistema.
+Exibe a sequência temporal de operações e mensagens trocadas durante o processo de registro de um novo aluno.
 
 ![Diagrama de Sequência: Cadastrar Novo Aluno](ImagesPlantUML/sequencia-cadastrarnovoaluno.png)
 
 #### Diagrama de Sequência: Marcar Presença (UC-06)
 
-Mostra a sequência de interações para o processo de marcação de presença de alunos em aulas.
+Demonstra a ordem das operações realizadas quando um instrutor ou funcionário registra a presença de um aluno em uma aula.
 
 ![Diagrama de Sequência: Marcar Presença](ImagesPlantUML/sequencia-marcarpresenca.png)
 
 #### Diagrama de Sequência: Visualizar Relatório (UC-09/10)
 
-Ilustra o fluxo de eventos e mensagens para a visualização de relatórios de progresso e de aulas.
+Apresenta a sequência de chamadas e respostas necessárias para gerar e exibir relatórios de progresso dos alunos e de atividades das aulas.
 
 ![Diagrama de Sequência: Visualizar Relatório](ImagesPlantUML/sequencia-visualizarrelatorio.png)
 
 #### Diagrama de Sequência: Agendar Aula Prática (UC-05)
 
-Representa o fluxo de eventos e mensagens para o agendamento de uma nova aula prática.
+Mostra o fluxo temporal de operações executadas quando um usuário agenda uma nova aula prática no sistema.
 
 ![Diagrama de Sequência: Agendar Aula Prática](ImagesPlantUML/sequencia2-agendaraulapratica.png)
 
 #### Diagrama de Sequência: Cadastro de Funcionário (UC-02)
 
-Ilustra o fluxo de eventos e mensagens para o cadastro de um novo funcionário no sistema.
+Descreve a ordem das interações e mensagens trocadas durante o processo de registro de um novo funcionário.
 
 ![Diagrama de Sequência: Cadastro de Funcionário](ImagesPlantUML/sequencia2-cadastrofuncionario.png)
 
 #### Diagrama de Sequência: Visualizar Agenda (UC-07)
 
-Mostra a sequência de interações para a visualização da agenda de aulas pelos usuários.
+Exibe o fluxo de operações realizadas quando um usuário consulta a agenda de aulas disponível no sistema.
 
 ![Diagrama de Sequência: Visualizar Agenda](ImagesPlantUML/sequencia2-visualizaragenda.png)
 
 ---
 
-### 📝 Outros Artefatos
 
-- **Códigos PlantUML:** Todos os arquivos fonte dos diagramas estão disponíveis na pasta `CodesPlantUML/` para edição e manutenção.
-
-- **Histórico de Revisões:** Documenta o versionamento e as alterações realizadas ao longo do desenvolvimento da arquitetura.
