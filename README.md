@@ -1,48 +1,53 @@
-# 🚗 Sistema de Autoescola
+# 🚗 AutoGest
 
 ## Documentação de Arquitetura de Software
 
 ---
 
-### 🚀 Bem-vindo(a) à documentação do Projeto Sistema de Autoescola!
+### 🚀 Bem-vindo(a) à documentação do Projeto AutoGest!
 
-Este repositório serve como um hub central para toda a documentação de arquitetura, design e modelagem do software **Sistema de Autoescola**. Aqui, você encontrará uma coleção abrangente de diagramas UML e outros artefatos visuais que detalham a estrutura, o comportamento e as interações do sistema, fornecendo uma visão clara e estruturada para todos os stakeholders envolvidos.
+Este repositório serve como um hub central para toda a documentação de arquitetura, design e modelagem do software **AutoGest**. Aqui, você encontrará uma coleção abrangente de diagramas UML e outros artefatos visuais que detalham a estrutura, o comportamento e as interações do sistema, fornecendo uma visão clara e estruturada para todos os stakeholders envolvidos.
+
+### 📖 Sobre o Sistema
+
+O AutoGest é um software focado em otimizar a gestão de uma autoescola, englobando cadastros de alunos, veículos e instrutores, além do controle de aulas. Com essa solução, busca-se eliminar a necessidade do uso de um sistema que não é agradável ao cliente, melhorando a organização, reduzindo erros da gestão manual e aumentando a eficiência operacional. O sistema também, permitirá um acompanhamento mais preciso das atividades da autoescola, facilitando o agendamento de aulas, a gestão de pagamentos e a comunicação entre alunos e instrutores. Dessa forma, espera-se proporcionar uma experiência mais eficaz para os envolvidos.
 
 ### 📚 Índice
 
-* [Visão Geral da Documentação](#-visão-geral-da-documentação)
-* [Diagrama de Arquitetura](#-diagrama-de-arquitetura)
-* [Diagrama de Caso de Uso](#-diagrama-de-caso-de-uso)
-* [Diagrama de Classe](#-diagrama-de-classe)
-* [Diagrama de Componentes](#-diagrama-de-componentes)
-* [Diagramas de Comunicação](#-diagramas-de-comunicação)
-    * [Comunicação: Cadastro de Aluno (UC-01)](#diagrama-de-comunicação-cadastro-de-aluno-uc-01)
-    * [Comunicação: Visualizar Relatórios (UC-09/10)](#diagrama-de-comunicação-visualizar-relatórios-uc-0910)
-* [Diagramas de Estados](#-diagramas-de-estados)
-    * [Estados: Status de Matrícula do Aluno](#diagrama-de-estados-status-de-matrícula-do-aluno)
-    * [Estados: Aula Prática](#diagrama-de-estados-aula-prática)
-* [Diagrama de Implantação](#-diagrama-de-implantação)
-* [Diagrama de Modelo de Dados](#-diagrama-de-modelo-de-dados)
-* [Diagramas de Sequência](#-diagramas-de-sequência)
-    * [Sequência: Cadastrar Novo Aluno (UC-01)](#diagrama-de-sequência-cadastrar-novo-aluno-uc-01)
-    * [Sequência: Marcar Presença (UC-06)](#diagrama-de-sequência-marcar-presença-uc-06)
-    * [Sequência: Visualizar Relatório (UC-09/10)](#diagrama-de-sequência-visualizar-relatório-uc-0910)
-    * [Sequência: Agendar Aula Prática (UC-05)](#diagrama-de-sequência-agendar-aula-prática-uc-05)
-    * [Sequência: Cadastro de Funcionário (UC-02)](#diagrama-de-sequência-cadastro-de-funcionário-uc-02)
-    * [Sequência: Visualizar Agenda (UC-07)](#diagrama-de-sequência-visualizar-agenda-uc-07)
-* [Outros Artefatos](#-outros-artefatos)
+- [Sobre o Sistema](#-sobre-o-sistema)
+- [Visão Geral da Documentação](#-visão-geral-da-documentação)
+- [Diagrama de Arquitetura](#-diagrama-de-arquitetura)
+- [Diagrama de Caso de Uso](#-diagrama-de-caso-de-uso)
+- [Diagrama de Classe](#-diagrama-de-classe)
+- [Diagrama de Componentes](#-diagrama-de-componentes)
+- [Diagramas de Comunicação](#-diagramas-de-comunicação)
+  - [Comunicação: Cadastro de Aluno (UC-01)](#diagrama-de-comunicação-cadastro-de-aluno-uc-01)
+  - [Comunicação: Visualizar Relatórios (UC-09/10)](#diagrama-de-comunicação-visualizar-relatórios-uc-0910)
+- [Diagramas de Estados](#-diagramas-de-estados)
+  - [Estados: Status de Matrícula do Aluno](#diagrama-de-estados-status-de-matrícula-do-aluno)
+  - [Estados: Aula Prática](#diagrama-de-estados-aula-prática)
+- [Diagrama de Implantação](#-diagrama-de-implantação)
+- [Diagrama de Modelo de Dados](#-diagrama-de-modelo-de-dados)
+- [Diagramas de Sequência](#-diagramas-de-sequência)
+  - [Sequência: Cadastrar Novo Aluno (UC-01)](#diagrama-de-sequência-cadastrar-novo-aluno-uc-01)
+  - [Sequência: Marcar Presença (UC-06)](#diagrama-de-sequência-marcar-presença-uc-06)
+  - [Sequência: Visualizar Relatório (UC-09/10)](#diagrama-de-sequência-visualizar-relatório-uc-0910)
+  - [Sequência: Agendar Aula Prática (UC-05)](#diagrama-de-sequência-agendar-aula-prática-uc-05)
+  - [Sequência: Cadastro de Funcionário (UC-02)](#diagrama-de-sequência-cadastro-de-funcionário-uc-02)
+  - [Sequência: Visualizar Agenda (UC-07)](#diagrama-de-sequência-visualizar-agenda-uc-07)
+- [Outros Artefatos](#-outros-artefatos)
 
 ---
 
 ### 💡 Visão Geral da Documentação
 
-Cada seção abaixo contém um diagrama específico acompanhado de uma breve descrição do seu propósito e do que ele representa no contexto do sistema **Sistema de Autoescola**.
+Cada seção abaixo contém um diagrama específico acompanhado de uma breve descrição do seu propósito e do que ele representa no contexto do sistema **AutoGest**.
 
 ---
 
 ### 🏛️ Diagrama de Arquitetura
 
-Este diagrama (C4 Nível 2) ilustra a estrutura de alto nível do sistema **Sistema de Autoescola**, mostrando os principais contêineres (aplicações, microsserviços, bancos de dados) e suas interações fundamentais. Ele fornece uma visão macro da organização do software.
+Este diagrama (C4 Nível 2) ilustra a estrutura de alto nível do sistema **AutoGest**, mostrando os principais contêineres (aplicações, microsserviços, bancos de dados) e suas interações fundamentais. Ele fornece uma visão macro da organização do software.
 
 ![Diagrama de Arquitetura](ImagesPlantUML/arquitetura.png)
 
@@ -50,7 +55,7 @@ Este diagrama (C4 Nível 2) ilustra a estrutura de alto nível do sistema **Sist
 
 ### 👥 Diagrama de Caso de Uso
 
-Apresenta os casos de uso principais do sistema **Sistema de Autoescola**, identificando os atores (Administrador, Funcionário, Instrutor) e as funcionalidades que eles podem executar, descrevendo o comportamento externo do sistema.
+Apresenta os casos de uso principais do sistema **AutoGest**, identificando os atores (Administrador, Funcionário, Instrutor) e as funcionalidades que eles podem executar, descrevendo o comportamento externo do sistema.
 
 ![Diagrama de Caso de Uso](ImagesPlantUML/casosdeuso.png)
 
@@ -168,7 +173,6 @@ Mostra a sequência de interações para a visualização da agenda de aulas pel
 
 ### 📝 Outros Artefatos
 
-* **Códigos PlantUML:** Todos os arquivos fonte dos diagramas estão disponíveis na pasta `CodesPlantUML/` para edição e manutenção.
+- **Códigos PlantUML:** Todos os arquivos fonte dos diagramas estão disponíveis na pasta `CodesPlantUML/` para edição e manutenção.
 
-* **Histórico de Revisões:** Documenta o versionamento e as alterações realizadas ao longo do desenvolvimento da arquitetura.
-
+- **Histórico de Revisões:** Documenta o versionamento e as alterações realizadas ao longo do desenvolvimento da arquitetura.
