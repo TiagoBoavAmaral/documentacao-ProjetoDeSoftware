@@ -4,7 +4,7 @@
 
 ---
 
-### 🚀 Bem-vindo(a) à documentação do Projeto Sistema de Autoescola!
+### 🚀 Bem-vindo(a) à documentação do Projeto AutoGest!
 
 Este repositório serve como um hub central para toda a documentação de arquitetura, design e modelagem do software **Sistema de Autoescola**. Aqui, você encontrará uma coleção abrangente de diagramas UML e outros artefatos visuais que detalham a estrutura, o comportamento e as interações do sistema, fornecendo uma visão clara e estruturada para todos os stakeholders envolvidos.
 
