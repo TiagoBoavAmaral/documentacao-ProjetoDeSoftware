@@ -1,0 +1,42 @@
+@startuml
+autonumber "<b>[0]</b>"
+skinparam sequenceArrowColor #A80036
+skinparam sequenceActorBorderColor #A80036
+skinparam sequenceLifeLineBorderColor #A80036
+skinparam sequenceParticipantBorderColor #A80036
+skinparam sequenceParticipantBackgroundColor #F8F8F8
+title "Diagrama de Sequência: Cadastrar Novo Funcionário (UC-02)"
+
+actor "Administrador" as admin
+boundary "Interface do Sistema" as ui
+control "Controlador de Usuários" as controller
+entity "Registro de Usuário" as userDB
+
+admin -> ui : 1. Solicita tela de cadastro de funcionário
+activate ui
+ui --> admin : 2. Exibe formulário (dados, cargo, CNH, login)
+deactivate ui
+
+admin -> ui : 3. Preenche dados e clica em "Salvar"
+activate ui
+ui -> controller : 4. requisitarCadastroFunc(dadosFunc)
+activate controller
+
+controller -> controller : 5. Validar dados (campos, formato CNH)
+controller -> userDB : 6. verificarDuplicidade(cpf, login)
+activate userDB
+userDB --> controller : 7. (Nenhuma duplicidade)
+deactivate userDB
+
+controller -> controller : 8. hashSenha(senhaPlana)
+controller -> userDB : 9. criarUsuario(dadosComHash)
+activate userDB
+userDB --> controller : 10. Funcionário criado
+deactivate userDB
+
+controller --> ui : 11. exibeConfirmacao("Funcionário cadastrado!")
+deactivate controller
+ui --> admin : 12. Mostra mensagem de sucesso
+deactivate ui
+
+@enduml

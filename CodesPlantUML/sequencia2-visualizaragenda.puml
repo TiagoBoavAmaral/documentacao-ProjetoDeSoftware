@@ -1,0 +1,39 @@
+@startuml
+autonumber "<b>[0]</b>"
+skinparam sequenceArrowColor #A80036
+skinparam sequenceActorBorderColor #A80036
+skinparam sequenceLifeLineBorderColor #A80036
+skinparam sequenceParticipantBorderColor #A80036
+skinparam sequenceParticipantBackgroundColor #F8F8F8
+title "Diagrama de Sequência: Visualizar Agenda (UC-07)"
+
+actor "Instrutor" as instrutor
+boundary "Interface de Agenda" as ui
+control "Controlador de Aulas" as controller
+entity "Registro de Aulas" as aulaDB
+entity "Registro de Aluno" as alunoDB
+
+instrutor -> ui : 1. Solicita "Minha Agenda"
+activate ui
+ui -> controller : 2. getMinhaAgenda(instrutorID, dataRange)
+activate controller
+
+controller -> aulaDB : 3. buscarAulasPorInstrutor(instrutorID, dataRange)
+activate aulaDB
+aulaDB --> controller : 4. Lista de Aulas (com alunoIDs)
+deactivate aulaDB
+
+note right of controller : O controlador "enriquece" os dados
+loop para cada aula na lista
+    controller -> alunoDB : 5. buscarNomeAluno(alunoID)
+    activate alunoDB
+    alunoDB --> controller : 6. (Nome do Aluno)
+    deactivate alunoDB
+end
+
+controller --> ui : 7. exibeAgenda(listaDeAulasComNomes)
+deactivate controller
+ui --> instrutor : 8. Mostra agenda preenchida
+deactivate ui
+
+@enduml

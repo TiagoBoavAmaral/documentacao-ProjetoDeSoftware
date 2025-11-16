@@ -1,0 +1,15 @@
+@startuml
+title "Diagrama de Comunicação: Cadastrar Novo Aluno (UC-01)"
+
+actor "Funcionário" as func
+rectangle ":Interface do Sistema" as ui
+rectangle ":Controlador de Alunos" as controller
+rectangle ":Registro de Aluno" as alunoDB
+
+func - ui : "1: Preenche dados e Salva"
+ui - controller : "2: requisitarCadastro(dadosAluno)"
+controller - controller : "3: Validar dados()"
+controller - alunoDB : "4: verificarDuplicidade(cpf)"
+controller - alunoDB : "5: criarAluno(dadosAluno)"
+
+@enduml

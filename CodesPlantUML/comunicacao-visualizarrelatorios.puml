@@ -1,0 +1,16 @@
+@startuml
+title "Diagrama de Comunicação: Visualizar Relatório de Progresso (UC-09)"
+
+actor "Administrador" as admin
+rectangle ":Interface de Relatórios" as ui
+rectangle ":Controlador de Relatórios" as controller
+rectangle ":Registro de Aluno" as alunoDB
+rectangle ":Registro de Aulas" as aulaDB
+
+admin - ui : "1: Seleciona aluno e Gera"
+ui - controller : "2: requisitarRelatorioProgresso(alunoID)"
+controller - alunoDB : "3: buscarDadosAluno(alunoID)"
+controller - aulaDB : "4: buscarHistoricoAulas(alunoID)"
+controller - controller : "5: Compilar dados()"
+
+@enduml

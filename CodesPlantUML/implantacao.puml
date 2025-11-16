@@ -1,0 +1,44 @@
+@startuml
+skinparam linetype ortho
+skinparam node {
+    BorderColor #A80036
+    BackgroundColor #F8F8F8
+}
+skinparam artifact {
+    BorderColor #333333
+    BackgroundColor #FFFFFF
+}
+skinparam database {
+    BorderColor #A80036
+    BackgroundColor #F8F8F8
+}
+skinparam actorBorderColor #A80036
+
+actor "Usuário\n(Admin, Func., Instrutor)" as user
+
+node "Dispositivo do Usuário\n(PC, Celular)" as userDevice {
+    node "Navegador Web" as browser {
+        artifact "Aplicação Web (Frontend)" as web
+    }
+}
+
+node "Ambiente de Nuvem (ex: AWS)" as cloud {
+    node "Servidor de Aplicação\n(ex: EC2, App Engine)" as appServer {
+        artifact "API (Backend)" as api
+    }
+    
+    database "Serviço de Banco de Dados\n(ex: AWS RDS)" as dbService {
+        artifact "Banco de Dados (PostgreSQL)" as db
+    }
+}
+
+node "Sistema Externo" as ext {
+    artifact "API do DETRAN" as detran
+}
+
+user -- userDevice
+web ..> api : "Consome (JSON/HTTPS)"
+api ..> dbService : "Lê/Escreve (JDBC)"
+api ..> detran : "Consulta (JSON/HTTPS)"
+
+@enduml

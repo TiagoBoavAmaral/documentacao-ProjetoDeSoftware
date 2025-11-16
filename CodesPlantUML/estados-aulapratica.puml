@@ -1,0 +1,15 @@
+@startuml
+title "Diagrama de Estados - Aula Prática"
+
+
+
+[*] --> Agendada : UC-05 (Agendar Aula)
+
+Agendada --> EmAndamento : Instrutor inicia aula
+Agendada --> Cancelada : Admin/Funcionário cancela
+
+EmAndamento --> Concluida : Instrutor finaliza aula
+Concluida --> [*]
+Cancelada --> [*]
+
+@enduml

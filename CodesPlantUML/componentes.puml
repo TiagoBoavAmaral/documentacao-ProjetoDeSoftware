@@ -1,0 +1,41 @@
+@startuml
+title "Diagrama de Componentes - Sistema de Autoescola"
+skinparam componentStyle uml2
+
+
+package "Frontend" as Frontend {
+  [Aplicação Web (SPA)] as Web
+}
+
+
+package "API (Backend)" as Backend {
+  [Controlador API] as Controller
+  [Serviço de Alunos] as SvcAluno
+  [Serviço de Aulas] as SvcAula
+  [Cliente DETRAN] as SvcDetran
+  [Repositório] as SvcRepo
+}
+
+
+[API do DETRAN] as ExtDetran
+
+
+database "Banco de Dados\n(PostgreSQL)" as DB
+
+
+
+Web -down-> Controller : "Consome (JSON/HTTPS)"
+
+Controller -down-> SvcAluno
+Controller -down-> SvcAula
+
+SvcAluno -down-> SvcRepo
+SvcAula -down-> SvcRepo
+
+
+SvcAluno -right-> SvcDetran : "Valida Aluno"
+SvcDetran -right-> ExtDetran : "Consome API"
+
+SvcRepo -down-> DB : "Lê/Escreve (JDBC)"
+
+@enduml

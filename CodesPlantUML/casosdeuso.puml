@@ -1,0 +1,59 @@
+@startuml
+left to right direction
+skinparam linetype polyline
+
+actor "Administrador" as admin
+
+
+rectangle "Sistema de Autoescola" {
+
+    usecase "Gerenciar Alunos\n(UC-01)" as (UC01)
+    usecase "Gerenciar Funcionários\n(UC-02)" as (UC02)
+    usecase "Gerenciar Veículos\n(UC-03)" as (UC03)
+    
+    usecase "Gerenciar Aulas Teóricas\n(UC-04)" as (UC04)
+    usecase "Gerenciar Aulas Práticas\n(UC-05)" as (UC05)
+    
+    usecase "Marcar Presença de Alunos\n(UC-06)" as (UC06)
+    usecase "Visualizar Agenda de Aulas\n(UC-07)" as (UC07)
+    
+    usecase "Visualizar Lista de Alunos\n(UC-08)" as (UC08) 
+    
+    usecase "Visualizar Relatórios de Progresso\n(UC-09)" as (UC09)
+    usecase "Visualizar Relatórios de Aulas\n(UC-10)" as (UC10)
+    
+    usecase "Gerenciar Notificações\n(UC-11)" as (UC11)
+}
+
+actor "Funcionário" as func
+actor "Instrutor" as instr
+
+
+admin -- (UC01)
+admin -- (UC02)
+admin -- (UC03)
+admin -- (UC04)
+admin -- (UC05)
+admin -- (UC07)
+admin -- (UC06)
+admin -- (UC09)
+admin -- (UC10)
+admin -- (UC11)
+
+
+(UC01) -- func
+(UC04) -- func
+(UC05) -- func
+(UC07) -- func
+(UC06) -- func
+(UC11) -- func
+
+
+(UC08) -- instr
+(UC04) -- instr
+(UC05) -- instr
+(UC07) -- instr
+(UC06) -- instr
+(UC11) -- instr
+
+@enduml

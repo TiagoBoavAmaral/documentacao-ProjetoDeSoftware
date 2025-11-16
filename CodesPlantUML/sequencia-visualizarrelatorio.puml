@@ -1,0 +1,42 @@
+@startuml
+title "Diagrama de Sequência: Visualizar Relatório de Progresso (UC-09)"
+
+
+actor "Administrador" as admin
+boundary "Interface de Relatórios" as ui
+control "Controlador de Relatórios" as controller
+entity "Registro de Aluno" as alunoDB
+entity "Registro de Aulas" as aulaDB
+
+
+admin -> ui : 1. Solicita tela de relatórios
+activate ui
+ui --> admin : 2. Exibe filtros (ex: campo para buscar aluno)
+deactivate ui
+
+admin -> ui : 3. Seleciona aluno e clica em "Gerar"
+activate ui
+ui -> controller : 4. requisitarRelatorioProgresso(alunoID)
+activate controller
+
+
+controller -> alunoDB : 5. buscarDadosAluno(alunoID)
+activate alunoDB
+alunoDB --> controller : 6. (Dados do Aluno)
+deactivate alunoDB
+
+controller -> aulaDB : 7. buscarHistoricoAulas(alunoID)
+activate aulaDB
+aulaDB --> controller : 8. (Lista de aulas práticas e teóricas)
+deactivate aulaDB
+
+
+controller -> controller : 9. Compilar dados (Calcular % concluído, total de horas, etc.)
+
+controller --> ui : 10. exibeRelatorio(dadosCompilados)
+deactivate controller
+
+ui --> admin : 11. Mostra relatório de progresso na tela
+deactivate ui
+
+@enduml

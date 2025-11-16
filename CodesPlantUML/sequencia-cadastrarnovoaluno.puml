@@ -1,0 +1,47 @@
+@startuml
+
+title "Diagrama de Sequência: Cadastrar Novo Aluno (UC-01)"
+
+
+actor "Funcionário" as func
+boundary "Interface do Sistema" as ui
+control "Controlador de Alunos" as controller
+entity "Registro de Aluno" as alunoDB
+
+func -> ui : 1. Solicita tela de cadastro de aluno
+activate ui
+ui --> func : 2. Exibe formulário de cadastro
+deactivate ui
+
+func -> ui : 3. Preenche dados e clica em "Salvar"
+activate ui
+ui -> controller : 4. requisitarCadastro(dadosAluno)
+activate controller
+
+controller -> controller : 5. Validar dados (campos obrigatórios, formato)
+
+alt [Dados Inválidos]
+    controller --> ui : 6. Erro: "Dados incompletos ou inválidos"
+    ui --> func : 7. Exibe mensagem de erro
+    deactivate controller
+    deactivate ui
+else [Dados Válidos]
+    controller -> alunoDB : 6. verificarDuplicidade(cpf)
+    activate alunoDB
+    alunoDB --> controller : 7. (Nenhuma duplicidade encontrada)
+    deactivate alunoDB
+    
+    controller -> alunoDB : 8. criarAluno(dadosAluno)
+    activate alunoDB
+    alunoDB --> controller : 9. Aluno criado (retorna alunoID)
+    deactivate alunoDB
+    
+    controller --> ui : 10. exibeConfirmacao("Aluno cadastrado com sucesso!")
+    deactivate controller
+    
+    ui --> func : 11. Mostra mensagem de sucesso
+    deactivate ui
+end
+
+
+@enduml

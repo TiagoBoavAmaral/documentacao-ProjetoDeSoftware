@@ -1,0 +1,76 @@
+@startuml
+title "Diagrama de Classes - Sistema de Autoescola"
+
+
+hide empty members
+
+abstract class Usuario {
+  -id: int
+  -nome: String
+  -cpf: String
+  -email: String
+  #login: String
+  #senha: String
+  +fazerLogin()
+}
+
+class Funcionario extends Usuario {
+  -cargo: String
+  -dataAdmissao: Date
+}
+
+class Administrador extends Funcionario {
+  +gerenciarFuncionarios()
+  +gerenciarVeiculos()
+}
+
+class Instrutor extends Funcionario {
+  -numeroCNH: String
+  +visualizarAgenda()
+}
+
+class Aluno {
+  -id: int
+  -nome: String
+  -cpf: String
+  -statusMatricula: String
+}
+
+class Veiculo {
+  -id: int
+  -placa: String
+  -modelo: String
+  -tipo: String
+}
+
+abstract class Aula {
+  -id: int
+  -dataHora: DateTime
+  -status: String
+}
+
+class AulaTeorica extends Aula {
+  -topico: String
+  -sala: String
+}
+
+class AulaPratica extends Aula {
+  +iniciarAula()
+  +finalizarAula()
+}
+
+class Presenca {
+  -status: String
+  -observacao: String
+}
+
+Administrador "1" -- "0..*" Veiculo : gerencia
+Instrutor "1" -- "0..*" AulaTeorica : ministra
+Instrutor "1" -- "0..*" AulaPratica : ministra
+Veiculo "1" -- "0..*" AulaPratica : alocado em
+
+(Aluno, Aula) .. Presenca
+Aluno "1" -- "0..*" Presenca
+Aula "1" -- "1..*" Presenca
+
+@enduml

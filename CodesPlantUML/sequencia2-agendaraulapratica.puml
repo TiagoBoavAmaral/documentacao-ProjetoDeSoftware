@@ -1,0 +1,60 @@
+@startuml
+autonumber "<b>[0]</b>"
+skinparam sequenceArrowColor #A80036
+skinparam sequenceActorBorderColor #A80036
+skinparam sequenceLifeLineBorderColor #A80036
+skinparam sequenceParticipantBorderColor #A80036
+skinparam sequenceParticipantBackgroundColor #F8F8F8
+title "Diagrama de Sequência: Agendar Aula Prática (UC-05)"
+
+actor "Funcionário" as func
+boundary "Interface de Agenda" as ui
+control "Controlador de Aulas" as controller
+entity "Registro de Aluno" as alunoDB
+entity "Agenda Instrutor" as agendaInstrutor
+entity "Frota Veículos" as frota
+entity "Registro de Aulas" as aulaDB
+
+func -> ui : 1. Seleciona (aluno, instrutor, veiculo, dataHora)
+activate ui
+ui -> controller : 2. solicitarAgendamento(...)
+activate controller
+
+controller -> alunoDB : 3. verificarStatus(alunoID)
+activate alunoDB
+alunoDB --> controller : 4. Status "Ativo"
+deactivate alunoDB
+
+controller -> agendaInstrutor : 5. verificarDisponibilidade(instrutorID, dataHora)
+activate agendaInstrutor
+agendaInstrutor --> controller : 6. Status "Disponível"
+deactivate agendaInstrutor
+
+controller -> frota : 7. verificarDisponibilidade(veiculoID, dataHora)
+activate frota
+frota --> controller : 8. Status "Disponível"
+deactivate frota
+
+opt [Todos disponíveis]
+    controller -> aulaDB : 9. criarAulaPratica(dados)
+    activate aulaDB
+    aulaDB --> controller : 10. Aula Criada
+    deactivate aulaDB
+    
+    controller -> agendaInstrutor : 11. alocarHorario(instrutorID, aulaID)
+    activate agendaInstrutor
+    agendaInstrutor --> controller: 12. Alocado
+    deactivate agendaInstrutor
+    
+    controller -> frota : 13. alocarHorario(veiculoID, aulaID)
+    activate frota
+    frota --> controller: 14. Alocado
+    deactivate frota
+end
+
+controller --> ui : 15. exibeConfirmacao("Aula agendada!")
+deactivate controller
+ui --> func : 16. Mostra mensagem de sucesso
+deactivate ui
+
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+' --- Importa a biblioteca C4 ---
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' --- Configurações ---
+skinparam linetype ortho ' Linhas retas (como solicitado antes)
+
+' --- Pessoas (Usuários) ---
+' (Os mesmos do diagrama de caso de uso)
+Person(admin, "Administrador", "Usuário com acesso total")
+Person(func, "Funcionário", "Usuário operacional")
+Person(instr, "Instrutor", "Usuário focado em aulas")
+
+' --- Sistema Externo ---
+System_Ext(detran, "API do DETRAN", "Sistema externo de validação de dados")
+
+' --- Início do Limite do Sistema ---
+System_Boundary(autoescola, "Sistema de Autoescola") {
+
+    ' --- Contêineres Internos ---
+    
+    Container(web, "Aplicação Web", "JavaScript (React)", "Interface do usuário (SPA)")
+    
+    Container(api, "API (Backend)", "Java (Spring Boot)", "Lógica de Negócio e Serviços via JSON/HTTP")
+    
+    ContainerDb(db, "Banco de Dados", "PostgreSQL", "Armazenamento principal dos dados")
+
+}
+' --- Fim do Limite do Sistema ---
+
+
+' --- Relacionamentos ---
+
+' Pessoas usam a Aplicação Web
+Rel(admin, web, "Usa", "HTTPS")
+Rel(func, web, "Usa", "HTTPS")
+Rel(instr, web, "Usa", "HTTPS")
+
+' Web App usa a API
+Rel(web, api, "Consome", "JSON/HTTPS")
+
+' API usa o Banco de Dados
+Rel(api, db, "Lê/Escreve", "JDBC")
+
+' API usa o sistema externo
+Rel(api, detran, "Consulta dados", "JSON/HTTPS")
+
+@enduml

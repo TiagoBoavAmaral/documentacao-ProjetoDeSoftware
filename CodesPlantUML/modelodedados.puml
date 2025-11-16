@@ -1,0 +1,112 @@
+@startuml
+title "Diagrama Entidade-Relacionamento (ERD) - Autoescola"
+
+' --- Configurações ---
+skinparam linetype ortho
+skinparam entity {
+    BorderColor #A80036
+    BackgroundColor #FEFEFE
+    ArrowColor #A80036
+}
+hide empty members
+
+' --- Tabelas ---
+entity "usuario" as T_USU {
+  + **id_usuario (PK)**
+  --
+  nome
+  cpf
+  email
+  login
+  senha_hash
+}
+
+entity "funcionario" as T_FUNC {
+  + **id_funcionario (PK)**
+  --
+  *id_usuario (FK)*
+  cargo
+  data_admissao
+}
+
+entity "administrador" as T_ADMIN {
+  + **id_administrador (PK)**
+  --
+  *id_funcionario (FK)*
+}
+
+entity "instrutor" as T_INSTR {
+  + **id_instrutor (PK)**
+  --
+  *id_funcionario (FK)*
+  numero_cnh
+}
+
+entity "aluno" as T_ALUNO {
+  + **id_aluno (PK)**
+  --
+  nome
+  cpf
+  status_matricula
+}
+
+entity "veiculo" as T_VEIC {
+  + **id_veiculo (PK)**
+  --
+  placa
+  modelo
+  tipo
+}
+
+entity "aula" as T_AULA {
+  + **id_aula (PK)**
+  --
+  data_hora
+  status
+}
+
+entity "aula_teorica" as T_AULA_T {
+  + **id_aula_teorica (PK)**
+  --
+  *id_aula (FK)*
+  topico
+  sala
+}
+
+entity "aula_pratica" as T_AULA_P {
+  + **id_aula_pratica (PK)**
+  --
+  *id_aula (FK)*
+  *id_instrutor (FK)*
+  *id_veiculo (FK)*
+}
+
+entity "presenca" as T_PRES {
+  + **id_presenca (PK)**
+  --
+  *id_aluno (FK)*
+  *id_aula (FK)*
+  status
+  observacao
+}
+
+' --- Relacionamentos ---
+
+' Herança
+T_USU ||..|{ T_FUNC : "id_usuario"
+T_FUNC ||..|{ T_ADMIN : "id_funcionario"
+T_FUNC ||..|{ T_INSTR : "id_funcionario"
+
+T_AULA ||..|{ T_AULA_T : "id_aula"
+T_AULA ||..|{ T_AULA_P : "id_aula"
+
+' Relacionamentos Diretos
+T_INSTR |o..|{ T_AULA_P : "ministra"
+T_VEIC |o..|{ T_AULA_P : "alocado em"
+T_ADMIN |o..|{ T_VEIC : "gerencia"
+
+' Tabela de Junção (Presença)
+T_ALUNO }o..|| T_PRES : "participa"
+T_AULA }o..|| T_PRES : "registra"
+
+@enduml

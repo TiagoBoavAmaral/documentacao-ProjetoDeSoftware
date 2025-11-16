@@ -1,0 +1,56 @@
+@startuml
+
+
+title "Diagrama de Sequência: Marcar Presença de Aluno (UC-06)"
+
+
+actor "Instrutor" as instrutor
+boundary "Interface do Sistema" as ui
+control "Controlador de Aulas" as controller
+entity "Aula Prática" as aula
+entity "Registro de Aluno" as aluno
+
+
+instrutor -> ui : 1. Solicita tela de aulas do dia
+activate ui
+ui -> controller : 2. requisitaAulas(instrutorID)
+activate controller
+
+controller -> aula : 3. buscarAulasPorInstrutor(instrutorID)
+activate aula
+aula --> controller : 4. Lista de Aulas
+deactivate aula
+controller --> ui : 5. exibeListaDeAulas(lista)
+deactivate controller
+
+ui --> instrutor : 6. Mostra aulas do dia
+deactivate ui
+
+instrutor -> ui : 7. Seleciona aula e aluno
+activate ui
+ui -> controller : 8. solicitaMarcarPresenca(aulaID, alunoID)
+activate controller
+
+
+controller -> controller : 9. validaPermissao(instrutor, aulaID)
+controller -> aluno : 10. verificarStatus(alunoID)
+activate aluno
+aluno --> controller : 11. Status (ex: "Matriculado")
+deactivate aluno
+
+controller -> aula : 12. registrarPresenca(alunoID)
+activate aula
+aula --> controller : 13. Presença registrada
+deactivate aula
+
+controller -> aluno : 14. atualizarHistorico(aulaID)
+activate aluno
+aluno --> controller : 15. Histórico atualizado
+deactivate aluno
+
+controller --> ui : 16. exibeConfirmacao("Presença registrada!")
+deactivate controller
+ui --> instrutor : 17. Mostra mensagem de sucesso
+deactivate ui
+
+@enduml

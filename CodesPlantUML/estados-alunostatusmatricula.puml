@@ -1,0 +1,21 @@
+@startuml
+title "Diagrama de Estados - Aluno"
+
+
+
+[*] --> Matriculado : UC-01 (Cadastrar Aluno)
+
+state Matriculado {
+  [*] --> AguardandoAulas
+  AguardandoAulas --> Cursando : Agendar primeira aula
+}
+
+Matriculado --> Suspenso : Suspender (ex: financeiro)
+Cursando --> Suspenso : Suspender (ex: financeiro)
+
+Suspenso --> Matriculado : Reativar matrícula
+
+Cursando --> Concluido : [Carga horária concluída]
+Concluido --> [*]
+
+@enduml
