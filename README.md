@@ -35,7 +35,7 @@ O AutoGest é um software focado em otimizar a gestão de uma autoescola, englob
   - [Sequência: Agendar Aula Prática (UC-05)](#diagrama-de-sequência-agendar-aula-prática-uc-05)
   - [Sequência: Cadastro de Funcionário (UC-02)](#diagrama-de-sequência-cadastro-de-funcionário-uc-02)
   - [Sequência: Visualizar Agenda (UC-07)](#diagrama-de-sequência-visualizar-agenda-uc-07)
-- [Outros Artefatos](#-outros-artefatos)
+
 
 ---
 
