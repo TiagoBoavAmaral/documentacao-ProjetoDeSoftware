@@ -170,5 +170,3 @@ Exibe o fluxo de operações realizadas quando um usuário consulta a agenda de 
 ![Diagrama de Sequência: Visualizar Agenda](ImagesPlantUML/sequencia2-visualizaragenda.png)
 
 ---
-
-
